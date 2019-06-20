@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<style>
+.button1 {
+  background-image: url( img/Play_Pause.png);
+	background-size: 64px auto;
+	background-repeat: no-repeat;
+	background-color: #000000;
+  padding: 26px 32px;
+	bordeR:0px;
+	}
+	
+	.button2 {
+  background-image: url( img/replay_bttn.png);
+	background-size: 64px auto;
+	background-repeat: no-repeat;
+	background-color: #000000;
+  padding: 26px 32px;
+	bordeR:0px;
+	}
+	
+	.fullscreen {
+  background-image: url( img/full_screen.png);
+	background-size: 64px auto;
+	background-repeat: no-repeat;
+	background-color: #000000;
+  padding: 26px 32px;
+	bordeR:0px;
+	}
+	
+	progress {
+      color: #F15A24;
+      font-size: 12px;
+      width: 220px;
+      height: 16px;
+      border: none;
+      margin-right: 10px;
+      background: #434343;
+      border-radius: 9px;
+      vertical-align: middle;
+    }
+    progress::-moz-progress-bar { 
+      color:#F15A24;
+      background:#434343; 
+    }
+    
+    progress[value]::-webkit-progress-bar {
+      background-color: #434343;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+    
+    progress[value]::-webkit-progress-value {
+      background-color: #F15A24;
+    }
+	
+	input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      margin: 6.8px 0;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4.4px;
+      cursor: pointer;
+      box-shadow: 0.9px 0.9px 1.7px #002200, 0px 0px 0.9px #003c00;
+      background: #205928;
+      border-radius: 1px;
+      border: 1.1px solid #F15A24;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      box-shadow: 2.6px 2.6px 3.7px #00aa00, 0px 0px 2.6px #00c300;
+      border: 2.5px solid #83e584;
+      height: 18px;
+      width: 9px;
+      border-radius: 3px;
+      background: #F15A24;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -7.9px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #276c30;
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 4.4px;
+      cursor: pointer;
+      box-shadow: 0.9px 0.9px 1.7px #002200, 0px 0px 0.9px #003c00;
+      background: #205928;
+      border-radius: 1px;
+      border: 1.1px solid #18d501;
+    }
+    input[type=range]::-moz-range-thumb {
+      box-shadow: 2.6px 2.6px 3.7px #00aa00, 0px 0px 2.6px #00c300;
+      border: 2.5px solid #83e584;
+      height: 18px;
+      width: 9px;
+      border-radius: 3px;
+      background: #439643;
+      cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 4.4px;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: #194620;
+      border: 1.1px solid #18d501;
+      border-radius: 2px;
+      box-shadow: 0.9px 0.9px 1.7px #002200, 0px 0px 0.9px #003c00;
+    }
+    input[type=range]::-ms-fill-upper {
+      background: #205928;
+      border: 1.1px solid #18d501;
+      border-radius: 2px;
+      box-shadow: 0.9px 0.9px 1.7px #002200, 0px 0px 0.9px #003c00;
+    }
+    input[type=range]::-ms-thumb {
+      box-shadow: 2.6px 2.6px 3.7px #00aa00, 0px 0px 2.6px #00c300;
+      border: 2.5px solid #83e584;
+      height: 18px;
+      width: 9px;
+      border-radius: 3px;
+      background: #439643;
+      cursor: pointer;
+      height: 4.4px;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: #205928;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: #276c30;
+}
+	#volume-bar {
+	    width: 50px;
+      vertical-align: middle;
+      padding:0px;
+    }
+</style>
+	
+<div id="player" style="background-image: url(img/bg.png); background-size: 100% auto; background-repeat: no-repeat; width: 840px; height: 640px; margin: 0 auto;"> 
+	
+		<div style="text-align:center"> 
+		  <div style="height: 100px; width: 100%"></div>
+		  
+			<img src="img/title.png" width="200" style="margin-bottom: -20px" />
+			<br><br>
+		  <video id="video-element" width="420">
+			<source src="Vossi_bop.mp4" type="video/mp4">
+		  </video>
+			<br>
+			<div id='controls'>
+			
+				
+			<button class="button1" onclick="playPause()"></button> 
+				
+			<button class="button2" id='btnReplay' class='replay' title='replay' accesskey="R" onclick='replayVideo();'></button>
+				
+		  <!--<button onclick="makeBig()">Big</button>
+		  <button onclick="makeSmall()">Small</button>
+		  <button onclick="makeNormal()">Normal</button>-->
+				
+		<input type="range" id="volume-bar" title="volume" min="0" max="1" step="0.1" value="1">
+				
+				
+		<button id='btnFullScreen' class='fullscreen' title='toggle full screen' accesskey="T" onclick='toggleFullScreen()'> </button>
+				<br>
+				<progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
+			<br>
+				</div>
+			
+			
+		</div> 
+	</div>
+	
+	
+
+<script> 
+var myVideo = document.getElementById("video-element"); 
+
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+	
+</script>
+	
+<script>
+player       = document.getElementById('video-element');
+	btnPlayPause = document.getElementById('btnPlayPause');
+	btnMute      = document.getElementById('btnMute');
+	progressBar  = document.getElementById('progress-bar');
+  volumeBar    = document.getElementById('volume-bar');
+	
+	
+	
+// Update the video volume
+  volumeBar.addEventListener("change", function(evt) {
+		player.volume = evt.target.value;
+	});
+  document.getElementById('btnFullScreen').disabled = false;
+	// Add a listener for the timeupdate event so we can update the progress bar
+	player.addEventListener('timeupdate', updateProgressBar, false);
+	
+	// Add a listener for the play and pause events so the buttons state can be updated
+	player.addEventListener('play', function() {
+		// Change the button to be a pause button
+		changeButtonType(btnPlayPause, 'pause');
+	}, false);
+  
+	player.addEventListener('pause', function() {
+		// Change the button to be a play button
+		changeButtonType(btnPlayPause, 'play');
+	}, false);
+	
+	player.addEventListener('volumechange', function(e) { 
+		// Update the button to be mute/unmute
+		if (player.muted) changeButtonType(btnMute, 'unmute');
+		else changeButtonType(btnMute, 'mute');
+	}, false);	
+  
+	player.addEventListener('ended', function() { this.pause(); }, false);	
+  
+  progressBar.addEventListener("click", seek);
+
+  function seek(e) {
+      var percent = e.offsetX / this.offsetWidth;
+      player.currentTime = percent * player.duration;
+      e.target.value = Math.floor(percent / 100);
+      e.target.innerHTML = progressBar.value + '% played';
+  }
+
+  function playPauseVideo() {
+  	if (player.paused || player.ended) {
+  		// Change the button to a pause button
+  		changeButtonType(btnPlayPause, 'pause');
+  		player.play();
+  	}
+  	else {
+  		// Change the button to a play button
+  		changeButtonType(btnPlayPause, 'play');
+  		player.pause();
+  	}
+  }
+  
+  // Stop the current media from playing, and return it to the start position
+  function stopVideo() {
+  	player.pause();
+  	if (player.currentTime) player.currentTime = 0;
+  }
+  
+  // Toggles the media player's mute and unmute status
+  function muteVolume() {
+  	if (player.muted) {
+  		// Change the button to a mute button
+  		changeButtonType(btnMute, 'mute');
+  		player.muted = false;
+  	}
+  	else {
+  		// Change the button to an unmute button
+  		changeButtonType(btnMute, 'unmute');
+  		player.muted = true;
+  	}
+  }
+  
+  // Replays the media currently loaded in the player
+  function replayVideo() {
+  	resetPlayer();
+  	player.play();
+  }
+  
+  // Update the progress bar
+  function updateProgressBar() {
+  	// Work out how much of the media has played via the duration and currentTime parameters
+  	var percentage = Math.floor((100 / player.duration) * player.currentTime);
+  	// Update the progress bar's value
+  	progressBar.value = percentage;
+  	// Update the progress bar's text (for browsers that don't support the progress element)
+  	progressBar.innerHTML = percentage + '% played';
+  }
+  
+  // Updates a button's title, innerHTML and CSS class
+  function changeButtonType(btn, value) {
+  	btn.title     = value;
+  	btn.innerHTML = value;
+  	btn.className = value;
+  }
+  
+  function resetPlayer() {
+  	progressBar.value = 0;
+  	// Move the media back to the start
+  	player.currentTime = 0;
+  	// Set the play/pause button to 'play'
+  	changeButtonType(btnPlayPause, 'play');
+  }  
+  
+  function exitFullScreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+  }
+  
+  function toggleFullScreen() {
+    //var player = document.getElementById("player");
+
+    if (player.requestFullscreen)
+        if (document.fullScreenElement) {
+            document.cancelFullScreen();
+        } else {
+            player.requestFullscreen();
+        }
+        else if (player.msRequestFullscreen)
+        if (document.msFullscreenElement) {
+            document.msExitFullscreen();
+        } else {
+            player.msRequestFullscreen();
+        }
+        else if (player.mozRequestFullScreen)
+        if (document.mozFullScreenElement) {
+            document.mozCancelFullScreen();
+        } else {
+            player.mozRequestFullScreen();
+        }
+        else if (player.webkitRequestFullscreen)
+        if (document.webkitFullscreenElement) {
+            document.webkitCancelFullScreen();
+        } else {
+            player.webkitRequestFullscreen();
+        }
+    else {
+        alert("Fullscreen API is not supported");
+        
+    }
+  }
+</script>
+</body>
+</html>
