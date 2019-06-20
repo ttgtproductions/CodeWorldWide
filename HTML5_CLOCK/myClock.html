@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+    <head>
+
+        <title>jClocksGMT v. 2.0</title>
+        <link rel="stylesheet" href="css/jClocksGMT.css">
+ 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="js/jClocksGMT.js"></script>
+        <script src="js/jquery.rotate.js"></script>
+
+        <script>
+            $(document).ready(function(){
+
+                $('#clock_hou').jClocksGMT(
+                {
+                    title: 'Houston, TX, USA', 
+                    offset: '-6'
+                });
+
+                $('#clock_india').jClocksGMT(
+                {
+                    title: 'New Delhi, India', 
+                    offset: '+5.5', 
+                    dst: false, 
+                    skin: 4, 
+                    timeformat: 'HH:mm'
+                });
+
+                $('#clock_korea').jClocksGMT(
+                {
+                    title: 'Seoul, S. Korea', 
+                    offset: '+8', 
+                    skin: 4, 
+                    date: true
+                });
+
+                $('#clock_uk').jClocksGMT(
+                {   
+                    date: true, 
+                    dateformat: 'YYYY/MM/DD', 
+                    skin: 4
+                });
+
+                $('#clock_tokyo').jClocksGMT(
+                {
+                    title: 'Tokyo, Japan',
+                    offset: '+9',
+                    skin: 4
+                });
+
+            });
+        </script>
+        <style>
+            body { font-family: Arial, sans-serif;}
+        </style>	
+    </head>
+    <body>
+
+       <!-- <div id="clock_uk"></div>
+        <div id="clock_india"></div>
+		<div id="clock_korea"></div>
+        <div id="clock_tokyo"></div> -->
+
+
+		
+	<script type="text/javascript">
+
+function showDiv()
+{
+  // hide any showing
+  $(".details_div").each(function(){
+      $(this).css('display','none');
+  });
+
+  // our target
+  var target = "#details_" + $("#test_select").val();                                                                                                                                
+
+  // does it exist?
+  if( $(target).length > 0 )
+  {
+    // show it
+    $(target).css('display','block');
+  }
+}
+
+$(document).ready(function(){
+
+  // bind it
+  $("#test_select").change(function(){
+    showDiv();
+  });
+
+  // run it automagically
+  showDiv();
+});
+
+</script>
+
+
+
+
+<div style="width: 100%; float: left">
+	<div style="margin: 50px auto; width: 120px; clear: both">
+
+		<div id="details_uk" class="details_div"><div id="clock_uk"></div></div>
+
+		<div id="details_india" class="details_div"><div id="clock_india"></div></div>
+
+		<div id="details_korea" class="details_div"><div id="clock_korea"></div></div>
+
+		<div id="details_tokyo" class="details_div"><div id="clock_tokyo"></div></div>
+	</div>
+</div>	
+		
+	<div style="width: 100%; float: left">
+	<div style="margin: 20px auto; width: 80px; clear: both">
+	<select id="test_select">
+  <option value="">- Select - </option>
+  <option value="uk" selected="selected">UK</option>
+  <option value="india">India</option>
+	<option value="korea">Korea</option>
+	<option value="tokyo">Tokyo</option>
+</select>
+	</div>
+		</div>
+	
+        
